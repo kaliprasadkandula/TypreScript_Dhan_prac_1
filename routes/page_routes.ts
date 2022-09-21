@@ -13,6 +13,21 @@ export class page_routes{
         else if(method==="GET" && url==='/contact'){
             res.end(`contact ${company}`)
         }
+        else if(method==="POST" && url==='/admin_login'){ //we don't have any data storage in this project but let's handle the data
+            let body:any=''
+            req.on('data', (chunk)=>{body+=chunk}).on('end', ()=>{
+                body=JSON.parse(body)
+                console.log(`${body.name}  ${body.password} `)
+                if(body.name==='admin'&&body.password==='1234')
+                {
+                    res.end(`Welcome to ${company} admin portal!`)
+                }
+                else{
+                    res.end(`wrong credentials,access denied  to ${company} admin portal!`)
+                }
+            })
+
+        }
         else{
             res.end(`Sorry,${url} Not found`) 
         }
