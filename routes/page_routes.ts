@@ -15,7 +15,7 @@ export class page_routes{
         }
         else if(method==="POST" && url==='/admin_login'){ //we don't have any data storage in this project but let's handle the data
             let body:any=''
-            req.on('data', (chunk)=>{body+=chunk}).on('end', ()=>{
+            req.on('data', (chunk)=>{body+=chunk}).on('end', ()=>{ //you are picking data chunk by chunk  and after formation you parse it as json data
                 body=JSON.parse(body)
                 console.log(`${body.name}  ${body.password} `)
                 if(body.name==='admin'&&body.password==='1234')
