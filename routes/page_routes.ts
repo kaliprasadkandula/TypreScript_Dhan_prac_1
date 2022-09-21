@@ -14,7 +14,7 @@ export class page_routes{
             res.end(`contact ${company}`)
         }
         else{
-            res.end(`Sorry,${url} Not found`)
+            res.end(`Sorry,${url} Not found`) 
         }
     }
 }
